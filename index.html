@@ -3,11 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JS Geometry Dash</title>
+    <title>GD Portable</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Фоновая музыка (по желанию, пока скрыта) -->
+    <!-- <audio id="bgMusic" loop src="music.mp3"></audio> -->
+
     <canvas id="gameCanvas"></canvas>
+
+    <!-- Главное меню (Лобби) -->
+    <div id="mainMenu">
+        <h1 class="game-title">GEOMETRY JS</h1>
+        <div class="buttons-container">
+            <!-- Левая кнопка: Скины -->
+            <button id="btnSkin" class="menu-btn box-btn" style="background-color: #A158FF;">
+                <div class="icon-face"></div>
+            </button>
+            
+            <!-- Средняя кнопка: Играть -->
+            <button id="btnPlay" class="menu-btn play-btn">
+                <div class="icon-play"></div>
+            </button>
+            
+            <!-- Правая кнопка: Секрет (позже объяснишь) -->
+            <button id="btnSecret" class="menu-btn box-btn" style="background-color: #444;">
+                <div class="icon-lock">?</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Меню выбора скина (скрыто по умолчанию) -->
+    <div id="skinMenu" class="hidden">
+        <h2>Choose Color</h2>
+        <div class="colors">
+            <div class="color-swatch" style="background:#FFFF00" onclick="setSkin('#FFFF00')"></div>
+            <div class="color-swatch" style="background:#00FF00" onclick="setSkin('#00FF00')"></div>
+            <div class="color-swatch" style="background:#00FFFF" onclick="setSkin('#00FFFF')"></div>
+            <div class="color-swatch" style="background:#FF0000" onclick="setSkin('#FF0000')"></div>
+        </div>
+        <button onclick="backToMenu()" class="back-btn">Back</button>
+    </div>
+
+    <!-- Экран смерти -->
+    <div id="gameOverScreen" class="hidden">
+        <h2>CRASHED!</h2>
+        <button onclick="resetGame()" class="restart-btn">Try Again</button>
+        <button onclick="backToMenu()" class="back-btn" style="margin-top:10px">Menu</button>
+    </div>
+
     <div id="score">Score: 0</div>
     <script src="script.js"></script>
 </body>
