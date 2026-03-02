@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Чтобы не было прокрутки */
+    background-color: #222;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #000;
+}
