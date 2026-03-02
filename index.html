@@ -7,33 +7,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Фоновая музыка (по желанию, пока скрыта) -->
-    <!-- <audio id="bgMusic" loop src="music.mp3"></audio> -->
-
     <canvas id="gameCanvas"></canvas>
 
-    <!-- Главное меню (Лобби) -->
+    <!-- Главное меню -->
     <div id="mainMenu">
         <h1 class="game-title">GEOMETRY JS</h1>
         <div class="buttons-container">
-            <!-- Левая кнопка: Скины -->
+            <!-- Скины -->
             <button id="btnSkin" class="menu-btn box-btn" style="background-color: #A158FF;">
                 <div class="icon-face"></div>
             </button>
             
-            <!-- Средняя кнопка: Играть -->
+            <!-- Играть (Текущий выбранный уровень) -->
             <button id="btnPlay" class="menu-btn play-btn">
                 <div class="icon-play"></div>
             </button>
             
-            <!-- Правая кнопка: Секрет (позже объяснишь) -->
-            <button id="btnSecret" class="menu-btn box-btn" style="background-color: #444;">
-                <div class="icon-lock">?</div>
+            <!-- Уровни (Правая кнопка) -->
+            <button id="btnLevels" class="menu-btn box-btn" style="background-color: #00AAFF;">
+                <div class="icon-list">☰</div>
             </button>
         </div>
+        <div id="currentLevelName" style="color:white; margin-top:20px; font-size:18px;">Level 1: Stereo Start</div>
     </div>
 
-    <!-- Меню выбора скина (скрыто по умолчанию) -->
+    <!-- Меню выбора уровней -->
+    <div id="levelsMenu" class="hidden">
+        <h2>SELECT LEVEL</h2>
+        <div class="level-grid" id="levelGrid">
+            <!-- Кнопки уровней будут созданы через JS -->
+        </div>
+        <button onclick="backToMenu()" class="back-btn" style="margin-top: 20px;">Back</button>
+    </div>
+
+    <!-- Меню скинов -->
     <div id="skinMenu" class="hidden">
         <h2>Choose Color</h2>
         <div class="colors">
@@ -45,14 +52,18 @@
         <button onclick="backToMenu()" class="back-btn">Back</button>
     </div>
 
-    <!-- Экран смерти -->
+    <!-- Экран смерти / Победы -->
     <div id="gameOverScreen" class="hidden">
-        <h2>CRASHED!</h2>
+        <h2 id="endTitle">CRASHED!</h2>
+        <div id="progressBarContainer">
+            <div id="progressBarFill"></div>
+        </div>
+        <div id="percentText">0%</div>
         <button onclick="resetGame()" class="restart-btn">Try Again</button>
         <button onclick="backToMenu()" class="back-btn" style="margin-top:10px">Menu</button>
     </div>
 
-    <div id="score">Score: 0</div>
+    <div id="score">0%</div>
     <script src="script.js"></script>
 </body>
 </html>
