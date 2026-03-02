@@ -1,20 +1,135 @@
 body {
     margin: 0;
-    overflow: hidden; /* Чтобы не было прокрутки */
-    background-color: #222;
-    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    font-family: 'Arial Black', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 canvas {
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* UI поверх Canvas */
+#mainMenu, #skinMenu, #gameOverScreen {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Заголовок */
+.game-title {
+    color: #ffcc00;
+    font-size: 40px;
+    text-shadow: 3px 3px 0 #000;
+    margin-bottom: 50px;
+    -webkit-text-stroke: 1px black;
+}
+
+/* Контейнер кнопок */
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Общий стиль кнопок */
+.menu-btn {
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #000;
+    transition: transform 0.1s;
+    position: relative;
+}
+
+.menu-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #000;
+}
+
+/* Кнопка Играть (большая по центру) */
+.play-btn {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(#00ff00, #008800);
+}
+.icon-play {
+    width: 0; 
+    height: 0; 
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid white;
+    margin: 0 auto;
+}
+
+/* Боковые кнопки */
+.box-btn {
+    width: 70px;
+    height: 70px;
+}
+
+/* Иконка лица (CSS рисунок) */
+.icon-face {
+    width: 30px; height: 30px;
+    background: yellow;
+    border: 2px solid black;
+    margin: 15px auto;
+}
+
+/* Иконка замка/вопроса */
+.icon-lock {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 #score {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 20px; left: 20px;
     color: white;
     font-size: 24px;
-    font-weight: bold;
+    z-index: 5;
+    text-shadow: 2px 2px 0 #000;
+    display: none; /* Скрываем в меню */
+}
+
+/* Меню скинов */
+.colors {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.color-swatch {
+    width: 50px; height: 50px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+.restart-btn, .back-btn {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 2px solid white;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+#gameOverScreen h2 {
+    color: red;
+    font-size: 50px;
     text-shadow: 2px 2px 0 #000;
 }
