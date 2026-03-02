@@ -1,63 +1,157 @@
-/* ... Оставь старые стили (body, canvas, buttons) без изменений ... */
-/* Добавь/Замени следующее: */
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    font-family: 'Arial Black', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
 
-/* Иконка списка уровней */
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Канвас на заднем плане */
+}
+
+/* Общий стиль для всех экранов меню */
+#mainMenu, #skinMenu, #levelsMenu, #gameOverScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Меню поверх канваса */
+    background: rgba(0, 0, 0, 0.6); /* Темная подложка */
+}
+
+/* Класс для скрытия элементов */
+.hidden {
+    display: none !important;
+}
+
+/* Заголовок */
+.game-title {
+    color: #ffcc00;
+    font-size: 40px;
+    text-shadow: 3px 3px 0 #000;
+    margin-bottom: 30px;
+    -webkit-text-stroke: 1px black;
+    text-align: center;
+}
+
+.level-indicator {
+    color: white; 
+    margin-top: 20px; 
+    font-size: 18px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Кнопки */
+.buttons-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-btn {
+    border: 3px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #000;
+}
+
+.play-btn {
+    width: 100px; height: 100px;
+    background: linear-gradient(#00ff00, #008800);
+}
+.box-btn {
+    width: 70px; height: 70px;
+}
+
+/* Иконки */
+.icon-play {
+    width: 0; height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid white;
+}
+.icon-face {
+    width: 30px; height: 30px;
+    background: yellow;
+    border: 2px solid black;
+}
 .icon-list {
     color: white;
     font-size: 30px;
     font-weight: bold;
-    margin-top: -5px;
 }
 
-/* Сетка уровней */
+/* Меню уровней */
 .level-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 в ряд */
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    width: 90%;
-    max-width: 500px;
+    max-width: 400px;
 }
-
 .level-btn {
-    width: 50px;
-    height: 50px;
+    width: 50px; height: 50px;
     background: #333;
     border: 2px solid #555;
     color: white;
     font-weight: bold;
     font-size: 20px;
-    cursor: pointer;
     border-radius: 5px;
 }
-
 .level-btn.active {
     border-color: #00ff00;
-    box-shadow: 0 0 10px #00ff00;
+    background: #444;
+    box-shadow: 0 0 5px #00ff00;
 }
 
-/* Прогресс бар */
+/* Меню цветов */
+.colors {
+    display: flex; gap: 10px; margin-bottom: 20px;
+}
+.color-swatch {
+    width: 50px; height: 50px; border: 2px solid white;
+}
+
+/* Game Over UI */
 #progressBarContainer {
-    width: 60%;
-    height: 20px;
-    background: #333;
-    border: 2px solid white;
-    margin: 10px 0;
-    border-radius: 10px;
-    overflow: hidden;
+    width: 60%; height: 20px;
+    background: #333; border: 2px solid white;
+    margin: 10px 0; border-radius: 10px; overflow: hidden;
 }
-
 #progressBarFill {
-    height: 100%;
-    width: 0%;
+    height: 100%; width: 0%;
     background: #00ff00;
-    transition: width 0.1s;
 }
-
 #percentText {
-    color: white;
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: white; font-size: 24px; margin-bottom: 20px;
+}
+.restart-btn, .back-btn {
+    padding: 10px 20px; font-size: 20px;
+    border: 2px solid white; background: #333;
+    color: white; border-radius: 5px;
 }
 
-/* Остальное из прошлого кода (game-title, mainMenu и т.д.) должно остаться! */
-/* Просто скопируй этот блок в конец или обнови существующие */
+#score {
+    position: absolute; top: 20px; left: 20px;
+    color: white; font-size: 24px; z-index: 5;
+    text-shadow: 2px 2px 0 #000;
+    display: none;
+}
